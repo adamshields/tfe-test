@@ -72,10 +72,10 @@ pipeline {
       }
       steps {
         sh '''
-          terraform init -backend=false
+          terraform init -reconfigure
           terraform validate
           terraform workspace list || true
-          terraform plan -lock=false -var="environment=dev" -out=tfplan
+          terraform plan -lock=false
         '''
       }
     }
